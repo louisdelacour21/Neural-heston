@@ -1,7 +1,7 @@
 # Neural Heston pricer: independent validation report
 
 *Louis Delacour, October 2026. Code, data generation and every number in this report:
-`python -m neural_heston.validate` and `python -m neural_heston.report` in the project repository.*
+`python -m neural_heston.validate` and `python -m neural_heston.report` in the project repository (github.com/louisdelacour21/Neural-heston). Interactive demo: neural-heston.streamlit.app.*
 
 > **Summary.** On a test set of 16,384 points never seen in training, the final network prices with an RMSE of 9.6e-6 in forward units (0.1 bp of the forward) and an implied-vol error of 0.8 bp on average, 7.5 bp at the 99th percentile. Its Greeks match the exact ones to within 1 % of their dispersion, gamma included. Calibrated through the network, 25 random surfaces reprice with the exact pricer to 0.4 bp (median) and 9.7 bp (worst). Differential training is what makes this possible: at equal architecture it divides the price error by 4 and the Greek errors by 4 to 8. The model is **fit for use inside its training box**, under two conditions: prices are floored at intrinsic value (0.13 % of raw outputs are slightly negative, at worst −1.7e-4), and the network is not used beyond the box, where errors grow up to tenfold. The speed gain over a vectorised reference is real but moderate on CPU (26× for 10,000 prices): the case for the network is large batches such as exposure simulation, not a single calibration.
 

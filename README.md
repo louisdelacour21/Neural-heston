@@ -7,7 +7,7 @@ The network replaces the semi-analytic Heston integral by an MLP written as a Bl
 with Greeks by automatic differentiation. The point of the project is not only the speed-up but the evidence that the
 approximation can be trusted, and where it cannot.
 
-**[Validation report (PDF)](report/validation_report.pdf)** · interactive demo: `streamlit run app.py`
+**[Validation report (PDF)](report/validation_report.pdf)** · **[Live demo](https://neural-heston.streamlit.app/)** (or locally: `streamlit run app.py`)
 
 ## Results
 
